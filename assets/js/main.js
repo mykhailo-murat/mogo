@@ -1,1 +1,30 @@
-console.log('we42243')
+document.addEventListener("DOMContentLoaded", () => {
+
+
+    console.log('we42243')
+    let slides = document.querySelectorAll('.slider__slide')
+    let slideDescs = []
+    slides.forEach(slide => {
+        slideDescs.push(slide.dataset.desc)
+    })
+    console.log(slideDescs)
+
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            renderBullet: function (i, className) {
+                return '<div class="' + className + '"> <div></div> <p> <span> 0' + (i + 1) + '</span> ' + slideDescs[i] + '  </p> </div>'
+            }
+        },
+    });
+
+    // let bullets = document.querySelectorAll('.swiper-pagination-bullet')
+    // bullets.forEach(bul => {
+    //     bul.style.flex = '1 1 10%';
+    // })
+
+});

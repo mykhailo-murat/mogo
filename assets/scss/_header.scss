@@ -1,5 +1,7 @@
 .header {
   padding: 15px 0;
+  position: relative;
+  z-index: 2;
 
   .logo {
     display: flex;
