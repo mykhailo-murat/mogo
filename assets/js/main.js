@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     slides.forEach(slide => {
         slideDescs.push(slide.dataset.desc)
     })
-    console.log(slideDescs)
-
     const swiper = new Swiper('.swiper', {
         // Optional parameters
 
@@ -19,4 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
     });
-});
+
+ });

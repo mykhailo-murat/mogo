@@ -70,7 +70,8 @@ $count = wp_count_posts()->publish;
                 </div>
 
 
-                <?php while ($blog->have_posts()) : $blog->the_post(); ?>
+                <?php while ($blog->have_posts()) : $blog->the_post();
+                    setup_postdata($post); ?>
                     <acticle id="post-<?php the_ID(); ?>" class="blog__post col-xl-4 col-lg-6">
                         <a href="<?php the_permalink(); ?>" class="blog__post-image">
                             <?php echo wp_get_attachment_image(get_post_thumbnail_id($post->ID), 'blog-img', false, array('class' => "of-cover")); ?>
@@ -111,7 +112,80 @@ $count = wp_count_posts()->publish;
             </div>
         </div>
     </section>
+    <?php wp_reset_postdata(); ?>
 <?php endif; ?>
 <!--END LATEST POSTS-->
+
+<!--SERVICES-->
+<section class="section service">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section__header text-center">
+                    <?php if ($service_title = get_field('service_title')): ?>
+                        <h3 class="title section__title"> <?php echo $service_title; ?></h3>
+                    <?php endif; ?>
+                    <?php if ($service_subtitle = get_field('service_subtitle')): ?>
+                        <h2 class="section__subtitle "><?php echo $service_subtitle ?> </h2>
+                    <?php endif; ?>
+
+                    <?php if ($service_text = get_field('service_text')): ?>
+                        <div class="section__text">
+                            <?php echo $service_text; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6">
+
+                <?php if ($service_img = get_field('service_img')): ?>
+                    <div class="service__img">
+                        <?php echo wp_get_attachment_image($service_img['id'], 'full', false, array('class' => 'of-cover')); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="col-xl-6">
+                <?php
+                if (have_rows('service_acc')): ?>
+                    <div class="accordion" id="accordion-1">
+                        <?php while (have_rows('service_acc')): the_row(); ?>
+                            <?php $first = get_row_index() == 1;
+                            $icon = get_sub_field('service_acc_ico');
+                            ?>
+                            <div class="card">
+                                <div class="card-header" id="<?php echo get_row_index(); ?>">
+                                    <h5 class="mb-0">
+                                        <a href="#" class="accordion__title <?php echo !$first ? 'collapsed' : ''; ?>" data-toggle="collapse"
+                                           data-target="#collapse-<?php echo get_row_index() ?>"
+                                           aria-expanded="true"
+                                           aria-controls="collapse-<?php echo get_row_index() ?>">
+                                            <?php echo wp_get_attachment_image($icon['id'], 'full', false, array('class' => 'accordion__title-ico')); ?>
+                                            <?php the_sub_field('service_acc_title') ?>
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse-<?php echo get_row_index(); ?>"
+                                     class="collapse <?php echo $first ? 'show' : ''; ?> "
+                                     aria-labelledby="heading-<?php echo get_row_index() ?>"
+                                     data-parent="#accordion-1">
+                                    <div class="card-body">
+                                        <?php the_sub_field('service_acc_text') ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!--END SERVICES-->
 
 <?php get_footer(); ?>

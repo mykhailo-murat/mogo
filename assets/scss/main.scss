@@ -3,10 +3,12 @@
 @import "search";
 @import "slider";
 @import "blog";
+@import "service";
 
 body {
   font-family: $font;
 }
+
 .of-cover {
   width: 100%;
   object-fit: cover;
@@ -69,6 +71,15 @@ body {
         height: 3px;
       }
     }
+
+    .section__text {
+      font-family: $text-font;
+      font-size: 15px;
+      max-width: 950px;
+      margin: 0 auto;
+      width: 100%;
+      margin-top: 50px;
+    }
   }
 }
 
@@ -78,7 +89,8 @@ body {
   margin-right: 20px;
   font-size: 14px;
 }
-.post-comments{
+
+.post-comments {
   padding-left: 30px;
   font-size: 14px;
   background: url("../images/comm.svg") left center no-repeat;

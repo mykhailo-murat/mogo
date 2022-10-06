@@ -1,0 +1,49 @@
+.service {
+
+
+  .accordion {
+    .card-header {
+      background: $white;
+    }
+
+    .card-body {
+      font-family: $text-font;
+      font-size: 15px;
+    }
+
+    .accordion__title {
+      color: $black;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: block;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        right: 0;
+        content: '';
+        background: url("../images/arrow.svg");
+        width: 21px;
+        height: 12px;
+        top: calc(50% - 6px);
+        transition: all .3s ease;
+        transform: rotate(180deg);
+      }
+
+      img {
+        margin-right: 15px;
+      }
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .accordion__title.collapsed {
+      &::before {
+        transform: unset;
+      }
+    }
+  }
+}
