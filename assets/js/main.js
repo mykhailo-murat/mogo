@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
-    console.log('we42243')
     let slides = document.querySelectorAll('.slider__slide')
     let slideDescs = []
     slides.forEach(slide => {
@@ -21,10 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
     });
-
-    // let bullets = document.querySelectorAll('.swiper-pagination-bullet')
-    // bullets.forEach(bul => {
-    //     bul.style.flex = '1 1 10%';
-    // })
-
 });

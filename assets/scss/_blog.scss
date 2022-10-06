@@ -1,0 +1,50 @@
+.blog {
+  padding: 120px 0;
+
+  .blog__post {
+    position: relative;
+
+    .blog__post-image {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .blog__post-date {
+      position: absolute;
+      top: 160px;
+      left: 5px;
+      display: flex;
+      flex-direction: column;
+      background: $mint;
+      color: $white;
+      width: 60px;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+
+      .day {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      .mon {
+        font-size: 15px;
+      }
+    }
+
+    .blog__post-title {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .blog__post-content {
+      font-size: 15px;
+      font-family: $text-font;
+    }
+
+    .blog__post-meta {
+      display: flex;
+    }
+  }
+}

@@ -75,6 +75,7 @@ function create_posttype()
 add_action('init', 'create_posttype');
 
 add_image_size('full_hd', 1920, 0, array('center', 'center'));
+add_image_size('blog-img', 380, 240, array('center', 'center'));
 
 /**
  * Output background image style
@@ -104,5 +105,23 @@ function bg($img = '', $size = '', $echo = true)
         echo $string;
     } else {
         return $string;
+    }
+}
+
+
+/*
+ * Set post views count using post meta//functions.php
+ */
+function customSetPostViews($postID)
+{
+    $countKey = 'post_views_count';
+    $count = get_post_meta($postID, $countKey, true);
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($postID, $countKey);
+        add_post_meta($postID, $countKey, '1');
+    } else {
+        $count++;
+        update_post_meta($postID, $countKey, $count);
     }
 }
