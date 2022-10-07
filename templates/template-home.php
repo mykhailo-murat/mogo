@@ -158,7 +158,8 @@ $count = wp_count_posts()->publish;
                             <div class="card">
                                 <div class="card-header" id="<?php echo get_row_index(); ?>">
                                     <h5 class="mb-0">
-                                        <a href="#" class="accordion__title <?php echo !$first ? 'collapsed' : ''; ?>" data-toggle="collapse"
+                                        <a href="#" class="accordion__title <?php echo !$first ? 'collapsed' : ''; ?>"
+                                           data-toggle="collapse"
                                            data-target="#collapse-<?php echo get_row_index() ?>"
                                            aria-expanded="true"
                                            aria-controls="collapse-<?php echo get_row_index() ?>">
@@ -187,5 +188,38 @@ $count = wp_count_posts()->publish;
 
 </section>
 <!--END SERVICES-->
+
+
+<!--TEAM-->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section__header text-center">
+                    <?php if ($team_title = get_field('team_title')): ?>
+                        <h3 class="title section__title"> <?php echo $team_title; ?></h3>
+                    <?php endif; ?>
+                    <?php if ($team_subtitle = get_field('team_subtitle')): ?>
+                        <h2 class="section__subtitle "><?php echo $team_subtitle ?> </h2>
+                    <?php endif; ?>
+
+                    <?php if ($team_text = get_field('team_text')): ?>
+                        <div class="section__text">
+                            <?php echo $team_text; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+
+            <?php if ($team_code = get_field('team_code')): ?>
+                <?php echo $team_code; ?>
+            <?php endif; ?>
+
+    </div>
+</section>
+
+<!--END TEAM-->
 
 <?php get_footer(); ?>
