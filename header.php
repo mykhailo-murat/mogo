@@ -15,7 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
@@ -26,47 +27,44 @@
 
 <header class="header">
     <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <div class="logo">
-                    <?php
-                    $custom_logo_id = get_theme_mod('custom_logo');
-                    $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+        <div class="header__inner">
+            <div class="logo">
+                <?php
+                $custom_logo_id = get_theme_mod('custom_logo');
+                $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
 
-                    if (has_custom_logo()) {
-                        echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
-                    } else {
-                        echo '<h1>' . get_bloginfo('name') . '</h1>';
-                    }
-                    ?>
-                </div>
+                if (has_custom_logo()) {
+                    echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
+                } else {
+                    echo '<h1>' . get_bloginfo('name') . '</h1>';
+                }
+                ?>
             </div>
-            <div class="col-10 text-right">
 
-                <?php if (has_nav_menu('header-menu')) : ?>
-                    <nav class="navbar navbar-expand-lg ">
+            <?php if (has_nav_menu('header-menu')) : ?>
+                <nav class="navigation">
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse " id="navbarNav">
-                            <?php wp_nav_menu(array(
-                                'theme_location' => 'header-menu',
-                                'menu_class' => 'menu header-menu',
-                                'items_wrap' => '<ul id="%1$s" class="%2$s" >%3$s</ul>',
-                            )); ?>
-                        </div>
+                    <div class="navbar-menu">
+                        <?php wp_nav_menu(array(
+                            'theme_location' => 'header-menu',
+                            'menu_class' => 'menu header-menu',
+                            'items_wrap' => '<ul id="%1$s" class="%2$s" >%3$s</ul>',
+                        )); ?>
                         <a class="header__cart" href="#"></a>
                         <div class="header__search">
                             <?php get_search_form(); ?>
                         </div>
-                    </nav>
-                <?php endif; ?>
-            </div>
+                    </div>
 
+                    <div id="menu_button">
+                        <input type="checkbox" id="menu_checkbox">
+                        <label for="menu_checkbox" id="menu_label">
+                            <div id="menu_text_bar"></div>
+                        </label>
+                    </div>
+
+                </nav>
+            <?php endif; ?>
         </div>
     </div>
-
 </header>

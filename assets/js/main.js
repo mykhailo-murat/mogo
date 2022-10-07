@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    let slides = document.querySelectorAll('.slider__slide')
+    const slides = document.querySelectorAll('.slider__slide')
     let slideDescs = []
     slides.forEach(slide => {
         slideDescs.push(slide.dataset.desc)
     })
     const swiper = new Swiper('.swiper', {
         // Optional parameters
-
+        slidesPerView: 1,
+        loop: true,
         // If we need pagination
         pagination: {
             el: '.swiper-pagination',
@@ -18,4 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
- });
+    const menuBtn = document.querySelector('#menu_button')
+    const menu = document.querySelector('.navbar-menu')
+
+    menuBtn.addEventListener('click', (e) => {
+
+        if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+        } else {
+            menu.classList.add('active');
+        }
+
+    })
+
+});
+
