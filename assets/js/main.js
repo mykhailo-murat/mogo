@@ -19,17 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    const menuBtn = document.querySelector('#menu_button')
+    const menuBtn = document.getElementById('menu_button')
     const menu = document.querySelector('.navbar-menu')
 
     menuBtn.addEventListener('click', (e) => {
-
+        menuBtn.classList.toggle('active');
         if (menu.classList.contains('active')) {
             menu.classList.remove('active');
         } else {
             menu.classList.add('active');
         }
-
     })
 
 });

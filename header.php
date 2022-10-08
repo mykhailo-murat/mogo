@@ -57,11 +57,9 @@
                     </div>
 
                     <div id="menu_button">
-                        <input type="checkbox" id="menu_checkbox">
-                        <label for="menu_checkbox" id="menu_label">
-                            <div id="menu_text_bar"></div>
-                        </label>
+                        <span></span>
                     </div>
+<!--                    <a id="menu-button" href="#">click</a>-->
 
                 </nav>
             <?php endif; ?>

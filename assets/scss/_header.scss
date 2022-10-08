@@ -42,6 +42,7 @@
       transition: all .3s ease;
     }
   }
+
   .navbar-menu.active {
     left: 0%;
   }
@@ -131,120 +132,58 @@
 
 
     #menu_button {
-      display: block;
-      width: 39px;
-      overflow: hidden;
-    }
-
-    #menu_checkbox {
-      display: none;
-    }
-
-    #menu_label {
       position: relative;
+      display:  inline-block;
+      width: 30px;
+      height: 30px;
+      span {
+        margin: 0 auto;
+        position: relative;
+        top: 12px;
+        -webkit-transition-duration: 0s; transition-duration: 0s;
+        -webkit-transition-delay: 0.2s; transition-delay: 0.2s;
+        &:before, &:after {
+          position: absolute;
+          content: '';
+        }
+      }
+    }
+    #menu_button span, #menu_button span:before, #menu_button span:after {
+      width: 30px;
+      height: 6px;
+      background-color: $white;
       display: block;
-      height: 35px;
-      cursor: pointer;
+    }
+    #menu_button span:before {
+      margin-top: -12px;
+    }
+    #menu_button span:after {
+      margin-top: 12px;
     }
 
-    #menu_label:before,
-    #menu_label:after,
-    #menu_text_bar {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background-color: #fff;
+    #menu_button.active span {
+      background-color: rgba(0,0,0,0.0);
+      -webkit-transition-delay: 0.2s; transition-delay: 0.2s;
     }
-
-    #menu_label:before,
-    #menu_label:after {
-      content: "";
-      transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
+    #menu_button span:before {
+      -webkit-transition-property: margin, -webkit-transform; transition-property: margin, transform;
+      -webkit-transition-duration: 0.2s; transition-duration: 0.2s;
+      -webkit-transition-delay: 0.2s, 0s; transition-delay: 0.2s, 0s;
     }
-
-    #menu_label:before {
-      top: 0;
+    #menu_button.active span:before {
+      margin-top: 0;
+      -webkit-transform: rotate(45deg); transform: rotate(45deg);
+      -webkit-transition-delay: 0s, 0.2s; transition-delay: 0s, 0.2s;
     }
-
-    #menu_label:after {
-      top: 12px;
+    #menu_button span:after {
+      -webkit-transition-property: margin, -webkit-transform; transition-property: margin, transform;
+      -webkit-transition-duration: 0.2s; transition-duration: 0.2s;
+      -webkit-transition-delay: 0.2s, 0s; transition-delay: 0.2s, 0s;
     }
-
-    #menu_text_bar {
-      top: 24px;
-    }
-
-    #menu_text_bar:before {
-      content: "MENU";
-      position: absolute;
-      top: 5px;
-      right: 0;
-      left: 0;
-      color: #fff;
-      font-size: 12px;
-      font-weight: bold;
-      font-family: "Montserrat", Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-
-    #menu_checkbox:checked + #menu_label:before {
-      left: -39px;
-    }
-
-    #menu_checkbox:checked + #menu_label:after {
-      left: 39px;
-    }
-
-    #menu_checkbox:checked + #menu_label #menu_text_bar:before {
-      animation: moveUpThenDown 0.8s ease 0.2s forwards,
-      shakeWhileMovingUp 0.8s ease 0.2s forwards,
-      shakeWhileMovingDown 0.2s ease 0.8s forwards;
-    }
-
-    @keyframes moveUpThenDown {
-      0% {
-        top: 0;
-      }
-      50% {
-        top: -27px;
-      }
-      100% {
-        top: -14px;
-      }
-    }
-
-    @keyframes shakeWhileMovingUp {
-      0% {
-        transform: rotateZ(0);
-      }
-      25% {
-        transform: rotateZ(-10deg);
-      }
-      50% {
-        transform: rotateZ(0deg);
-      }
-      75% {
-        transform: rotateZ(10deg);
-      }
-      100% {
-        transform: rotateZ(0);
-      }
-    }
-
-    @keyframes shakeWhileMovingDown {
-      0% {
-        transform: rotateZ(0);
-      }
-      80% {
-        transform: rotateZ(3deg);
-      }
-      90% {
-        transform: rotateZ(-3deg);
-      }
-      100% {
-        transform: rotateZ(0);
-      }
+    #menu_button.active span:after {
+      margin-top: 0;
+      -webkit-transform: rotate(-45deg); transform: rotate(-45deg);
+      -webkit-transition-delay: 0s, 0.2s; transition-delay: 0s, 0.2s;
     }
   }
 }
